@@ -2,38 +2,26 @@
 
 ## Description
 
-This application is called XXX. It is used for ...
-
-> Add a picture (logo, design, actual screen, gif, etc, whichever you prefer.)
-![](picture.png)
+This is the frontend repository for the React application `Oh My Goods`. The ultimate application to store all your devices or valuable goods (or anything with a S/N!). You can search if any other device is stored by other user on our database and you can mark any good if it's lost or stolen.
 
 ---
-## Instructions
 
-When cloning the project, change the <code>sample.env</code> file name for <code>.env</code>. The project will run on **PORT 3000**.
-
-Then, run:
-```bash
-npm install
-```
-
-To start the project run:
-```bash
-npm run start
-```
-
----
-## User stories 
+## User stories
 
 ### MVP
 
 - User can sign up and create a new account
 - User can login
 - User can log out
+- User can store, edit, and delete his own items
+- User can mark an item with an alert
+- User can check on a search bar a S/N
 
 ### Backlog
 
-- User can ...
+- User can receive notifications if someone searches his S/N
+- User can contact other owners
+- User can export his goods in PDF format
 
 ---
 
@@ -43,5 +31,3 @@ npm run start
 - [Backend repository]()
 - [Backend deploy]()
 - [Deployed app]()
-
-
