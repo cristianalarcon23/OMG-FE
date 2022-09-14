@@ -22,12 +22,14 @@ function AuthProviderWrapper(props) {
   const authenticateUser = async () => {
     setLoading(true);
     const storedToken = localStorage.getItem('authToken');
+
     if (storedToken) {
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/me`, { headers: { Authorization: `Bearer ${storedToken}` } });
         setIsLoggedIn(true);
         setLoading(false);
         setUser(response.data);
+        console.log(response.data)
       } catch (error) {
         setIsLoggedIn(false);
         setLoading(false);

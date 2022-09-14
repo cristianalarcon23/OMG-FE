@@ -10,6 +10,11 @@ export default function Navbar() {
       {user && <p>Hello {user.username}</p> }
       <ul>
         <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/">Home</NavLink></li>
+        <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/search">Search</NavLink></li>
+        {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/items">Items</NavLink></li>}
+        {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/items/add">Add item</NavLink></li>}
+        {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/transactions">Transactions</NavLink></li>}
+        {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/transactions/receive">Transfer item</NavLink></li>}
         {!isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/signup">Sign up</NavLink></li>}
         {!isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/login">Login</NavLink></li>}
         {isLoggedIn && <li><NavLink className={(element) => element.isActive ? 'selected' : ''} to="/private">Private view</NavLink></li>}

@@ -4,8 +4,11 @@ import axios from 'axios';
 
 export default function Signup() {
   const [user, setUser] = useState({
+    email: '',
+    fullName: '',
     username: '',
-    email: ''
+    idNumber: '',
+    telephone: ''
   })
   const [password, setPassword] = useState('');
   const [passwordControl, setPasswordControl] = useState('');
@@ -19,6 +22,7 @@ export default function Signup() {
         [e.target.name]: e.target.value
       }
     })
+    console.log(user)
   }
 
   useEffect(() => {
@@ -33,7 +37,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password });
+      await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password, fullName: user.fullName, idNumber: user.idNumber, telephone: user.telephone });
       navigate('/login');
     } catch (error) {
       setErrorMessage(error.response.data.error)
@@ -43,14 +47,20 @@ export default function Signup() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>Username</label>
-        <input required type="text" name="username" value={user.username} onChange={handleChange} />
         <label>Email</label>
         <input required type="email" name="email" value={user.email} onChange={handleChange} />
+        <label>Full Name</label>
+        <input required type="text" name="fullName" value={user.fullName} onChange={handleChange} />
+        <label>Username</label>
+        <input required type="text" name="username" value={user.username} onChange={handleChange} />
         <label>Password</label>
         <input required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value) } />
         <label>Repeat the password</label>
         <input required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} />
+        <label>Id number</label>
+        <input required type="text" name="idNumber" value={user.idNumber} onChange={handleChange} />
+        <label>Telephone</label>
+        <input required type="text" name="telephone" value={user.telephone} onChange={handleChange} />
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         <button type="submit">Register</button>
       </form>
