@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+
 
 export default function Items() {
     const [items, setItems] = useState(null);
     const storedToken = localStorage.getItem('authToken');
+
 
     useEffect(()=>{
       const getData = async () => {
@@ -20,7 +22,9 @@ export default function Items() {
     return (
         <>
         <h1>Items</h1>
+      <li><Link to="/items/add">Add a new item</Link></li>
       <div>
+        {!items && <p>No items registered</p>}
         {items && items.map(item => {
          return <div key={item._id}><p><Link to={`${item._id}`}>{item.name}</Link></p></div>
         })}

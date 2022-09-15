@@ -7,7 +7,7 @@ export default function Transactions() {
     const [transactionsSent, setTransactionsSent] = useState(null);
     const [transactionsReceived, setTransactionsReceived] = useState(null);
     const storedToken = localStorage.getItem('authToken');
-    const { user } = useContext(AuthContext);
+    const { isLoggedIn, user } = useContext(AuthContext);
 
     useEffect(()=>{
       const getData = async () => {
@@ -27,6 +27,7 @@ export default function Transactions() {
 
     return (
         <>
+                {isLoggedIn && <li><Link className={(element) => element.isActive ? 'selected' : ''} to="/transactions/receive">Receive item with token</Link></li>}
         <div>
             <h1>Sent items</h1>
         <div>

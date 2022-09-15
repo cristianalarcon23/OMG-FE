@@ -34,7 +34,7 @@ export default function ItemDetail() {
 const handleDelete = async () => {
     try {
       await axios.delete(`${process.env.REACT_APP_API_URL}/items/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
-      toast.success('Item deleted successfully')
+      toast.error('Item deleted successfully')
       navigate('/items');
     } catch (error) {
         setErrorMessage(error.response.data.error)
@@ -45,7 +45,7 @@ const handleDelete = async () => {
     try {
       await axios.post(`${process.env.REACT_APP_API_URL}/alerts/${id}`,{}, { headers: { Authorization: `Bearer ${storedToken}` } });
       setAlert(true);
-      toast.success('Your item is marked as LOST/STOLEN');
+      toast.error('Your item is marked as LOST/STOLEN');
     } catch (error) {
         setErrorMessage(error.response.data.error)
     }
@@ -74,7 +74,7 @@ const handleDelete = async () => {
   const deleteToken = async () => {
     try {
       const itemUnTokened = await axios.post(`${process.env.REACT_APP_API_URL}/transactions/deletetoken/${id}`, {}, { headers: { Authorization: `Bearer ${storedToken}` } });
-      toast.success('Token deleted');
+      toast.error('Token deleted');
       setItemDetail(itemUnTokened.data.data);
     } catch (error) {
         setErrorMessage(error.response.data.error)
@@ -91,7 +91,8 @@ const handleDelete = async () => {
             <p>Serial Number: {itemDetail.serialNumber}</p>
             <p>Item picture: {itemDetail.itemPicture}</p>
             <p>Bought new?: {itemDetail.newItem}</p>
-            {itemDetail.transactionToken && <p>Token: {itemDetail.transactionToken}</p>}
+            {itemDetail.transactionToken && <p>Transfer token: {itemDetail.transactionToken}</p>}
+            {alert && <p style={{ color: 'red' }}>This item has an stolen alert</p>}
             <button onClick={() => navigate(`/items/edit/${id}`)}>Edit item</button>
             <button onClick={handleDelete}>Delete item</button>
             {!alert ? <button onClick={handleAlert}>Mark item as lost</button> : <button onClick={deleteAlert}>Unmark item as lost</button>}
