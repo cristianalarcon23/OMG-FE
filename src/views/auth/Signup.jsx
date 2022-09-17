@@ -22,7 +22,6 @@ export default function Signup() {
         [e.target.name]: e.target.value
       }
     })
-    console.log(user)
   }
 
   useEffect(() => {

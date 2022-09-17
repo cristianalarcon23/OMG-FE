@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 export default function Search() {
 
   const [result, setResult] = useState(null);
+  const [alert, setAlert] = useState(false);
   const [search, setSearch] = useState({  
     serialNumber: ''
   });
@@ -28,20 +29,22 @@ export default function Search() {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/items/search`, search, { headers: { Authorization: `Bearer ${storedToken}` } });
       const alert = await axios.get(`${process.env.REACT_APP_API_URL}/alerts/${response.data.data._id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
       if (alert.data.data !== null) {
-        toast.error('Owner marked item as stolen, bitch')
+        toast.error('Owner marked item as stolen')
         setResult(response.data.data);
+        setAlert(true);
       } else {
-        setResult(response.data.data);
-        toast.success('Item is registered on DB!');    
+        setResult(response.data.data);  
       }  
     } catch (error) {
       setErrorMessage(error.response.data.error)
+      setResult(null);
     }
   }
 
   return (
     <div>
       <h1>Please type a S/N to look for it:</h1>
+      <p style={{ color: 'red' }}>Reminder! Search only allows alphanumeric values, no special characters allowed</p>
       <div>
         <form onSubmit={handleSearch}>
           <input type="text" name='serialNumber' onChange={handleChange} value={search.serialNumber} />
@@ -49,16 +52,16 @@ export default function Search() {
         </form>
       </div>
       <div>
-        {!result ? <p>Your search has no result</p> : <div>
+        {result === false ? <p>Your search has no result</p> : result ? <div>
         <p>Model: {result.name}</p>
         <p>Brand: {result.brand}</p>
         <p>Type: {result.type}</p>
         <p>Owner: {result.owner.username}</p>
-        </div>
-
-        }     
+        {alert && <p style={{ color: 'red' }}>Owner set an alert for this item</p> }
+        </div> 
+        : ''}     
       </div>
-      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      {errorMessage && !result && <p style={{ color: 'red' }}>{errorMessage}</p>}
       </div>
   )
 }

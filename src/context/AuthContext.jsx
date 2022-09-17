@@ -29,7 +29,6 @@ function AuthProviderWrapper(props) {
         setIsLoggedIn(true);
         setLoading(false);
         setUser(response.data);
-        console.log(response.data)
       } catch (error) {
         setIsLoggedIn(false);
         setLoading(false);

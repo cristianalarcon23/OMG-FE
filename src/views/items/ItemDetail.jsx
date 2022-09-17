@@ -92,6 +92,7 @@ const handleDelete = async () => {
             <p>Item picture: {itemDetail.itemPicture}</p>
             <p>Bought new?: {itemDetail.newItem}</p>
             {itemDetail.transactionToken && <p>Transfer token: {itemDetail.transactionToken}</p>}
+            {itemDetail.previousOwner && <p>Previous owner: {itemDetail.previousOwner.username}</p> }
             {alert && <p style={{ color: 'red' }}>This item has an stolen alert</p>}
             <button onClick={() => navigate(`/items/edit/${id}`)}>Edit item</button>
             <button onClick={handleDelete}>Delete item</button>

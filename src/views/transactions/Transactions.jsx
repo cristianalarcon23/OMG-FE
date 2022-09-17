@@ -27,12 +27,12 @@ export default function Transactions() {
 
     return (
         <>
-                {isLoggedIn && <li><Link className={(element) => element.isActive ? 'selected' : ''} to="/transactions/receive">Receive item with token</Link></li>}
+        {isLoggedIn && <li><Link className={(element) => element.isActive ? 'selected' : ''} to="/transactions/receive">Receive item with token</Link></li>}
         <div>
             <h1>Sent items</h1>
         <div>
             {transactionsSent && transactionsSent.map(transaction => {
-            return <div key={transaction._id}><p><Link to={`/items/${transaction.itemId._id}`}>{transaction.itemId.name}</Link></p><p>{transaction.buyerId.fullName}</p><p>{transaction.sellerId.fullName}</p></div>
+            return <div key={transaction._id}><p>{transaction.itemId.name}</p><p>{transaction.buyerId.fullName}</p><p>{transaction.sellerId.fullName}</p></div>
             })}
         </div>
         </div>
