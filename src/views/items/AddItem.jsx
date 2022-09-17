@@ -27,13 +27,11 @@ export default function AddItem2() {
   const [selected, setSelected] = useState(options[0].value);
 
   const handleChangeSelected = event => {
-    console.log(event.target.value);
     setSelected(event.target.value);
   };
 
   const handleChange = (e) => {
     const {name, value} = e.target;
-    console.log(e.target)
     setItemData(prev => {
       return {
         ...prev, 

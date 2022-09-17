@@ -1,7 +1,8 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import Navbar from './components/Navbar';
+import { useContext } from 'react';
+import NavbarUser from './components/NavbarUser';
 import ErrorPage from './views/ErrorPage';
 import Signup from './views/auth/Signup';
 import Login from './views/auth/Login';
@@ -15,12 +16,15 @@ import ItemDetail from './views/items/ItemDetail';
 import Transactions from './views/transactions/Transactions';
 import Receive from './views/transactions/Receive';
 import EditItem from './views/items/EditItem';
+import NavbarGuest from './components/NavbarGuest';
+import { AuthContext } from './context/AuthContext';
 
 function App() {
+  const { isLoggedIn } = useContext(AuthContext);
   return (
     <div className="App">
       <Toaster/>
-      <Navbar />
+      {isLoggedIn ? <IsPrivate><NavbarUser /></IsPrivate> : <NavbarGuest />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
