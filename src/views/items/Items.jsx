@@ -24,7 +24,6 @@ export default function Items() {
         <h1>Items</h1>
       <li><Link to="/items/add">Add a new item</Link></li>
       <div>
-        {!items && <p>No items registered</p>}
         {items && items.map(item => {
          return <div key={item._id}><p><Link to={`${item._id}`}>{item.name}</Link></p></div>
         })}
