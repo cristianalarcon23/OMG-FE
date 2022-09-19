@@ -40,8 +40,8 @@ export default function Example() {
         <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-md">
             <img
-              className="mx-auto h-12 w-auto"
-              src="https://pic.onlinewebfonts.com/svg/img_542832.png"
+              className="mx-auto h-24 w-auto"
+              src='https://res.cloudinary.com/do1ugcmht/image/upload/v1663593797/logo-black_fma6cl.png'
               alt="Your Company"
             />
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Log in to your account</h2>

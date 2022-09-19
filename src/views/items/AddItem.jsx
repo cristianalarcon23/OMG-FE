@@ -38,7 +38,20 @@ export default function AddItem2() {
         [name]: value,
       }
     })
-  }
+  };
+
+  const handleFileUpload = async(e) => {
+    const uploadData = new FormData();
+    uploadData.append("imageUrl", e.target.files[0]);
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/items/upload`, uploadData);
+      setImageUrls(prev => [...prev, response.data.fileUrl]);
+      setImgForUser(prev => [...prev, e.target.files[0].name]);
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,20 +71,9 @@ export default function AddItem2() {
     } catch (error) {
       setErrorMessage(error.response.data.error)
     }
-  }
-
-  const handleFileUpload = async(e) => {
-    const uploadData = new FormData();
-    uploadData.append("imageUrl", e.target.files[0]);
-    try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/items/upload`, uploadData);
-      setImageUrls(prev => [...prev, response.data.fileUrl]);
-      setImgForUser(prev => [...prev, e.target.files[0].name]);
-
-    } catch (error) {
-      console.error(error);
-    }
   };
+
+
 
     return (
     <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
