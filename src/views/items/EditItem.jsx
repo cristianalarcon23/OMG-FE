@@ -10,7 +10,7 @@ export default function EditItem() {
   const [item, setItem] = useState(null);
   const storedToken = localStorage.getItem('authToken');
   const [errorMessage, setErrorMessage] = useState(undefined);
-  const [imageUrls, setImageUrls] = useState([]);
+  // const [imageUrls, setImageUrls] = useState([]);
   // const [imgForUser, setImgForUser] = useState([]);
 
   const options = [
@@ -18,7 +18,7 @@ export default function EditItem() {
     {value: 'No', text: 'No'},
   ];
 
-  const [selected, setSelected] = useState(options[0].value);
+  // const [selected, setSelected] = useState(options[0].value);
 
   // const handleChangeSelected = event => {
   //   setSelected(event.target.value);
