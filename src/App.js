@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { useContext } from 'react';
 import NavbarUser from './components/NavbarUser';
@@ -23,7 +23,6 @@ import { AuthContext } from './context/AuthContext';
 function App() {
   const { isLoggedIn } = useContext(AuthContext);
   return (
-    <BrowserRouter>
     <div className="App">
       <Toaster/>
       {isLoggedIn ? <IsPrivate><NavbarUser /></IsPrivate> : <NavbarGuest />}
@@ -42,7 +41,6 @@ function App() {
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
-    </BrowserRouter>
   );
 }
 
