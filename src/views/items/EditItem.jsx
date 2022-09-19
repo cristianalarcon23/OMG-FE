@@ -11,7 +11,7 @@ export default function EditItem() {
   const storedToken = localStorage.getItem('authToken');
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [imageUrls, setImageUrls] = useState([]);
-  const [imgForUser, setImgForUser] = useState([]);
+  // const [imgForUser, setImgForUser] = useState([]);
 
   const options = [
     {value: 'Yes', text: 'Yes'},
@@ -20,9 +20,9 @@ export default function EditItem() {
 
   const [selected, setSelected] = useState(options[0].value);
 
-  const handleChangeSelected = event => {
-    setSelected(event.target.value);
-  };
+  // const handleChangeSelected = event => {
+  //   setSelected(event.target.value);
+  // };
 
   useEffect(() => {
     const getData = async () => {
@@ -65,18 +65,18 @@ export default function EditItem() {
     }
   }
 
-  const handleFileUpload = async(e) => {
-    const uploadData = new FormData();
-    uploadData.append("imageUrl", e.target.files[0]);
-    try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/items/upload`, uploadData);
-      setImageUrls(prev => [...prev, response.data.fileUrl]);
-      setImgForUser(prev => [...prev, e.target.files[0].name]);
+  // const handleFileUpload = async(e) => {
+  //   const uploadData = new FormData();
+  //   uploadData.append("imageUrl", e.target.files[0]);
+  //   try {
+  //     const response = await axios.post(`${process.env.REACT_APP_API_URL}/items/upload`, uploadData);
+  //     setImageUrls(prev => [...prev, response.data.fileUrl]);
+  //     setImgForUser(prev => [...prev, e.target.files[0].name]);
 
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   return (
     <div>
