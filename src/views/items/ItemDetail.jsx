@@ -19,6 +19,7 @@ export default function ItemDetail() {
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/items/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
       setItemDetail(response.data.data);
+      console.log(response.data.data)
       const alert = await axios.get(`${process.env.REACT_APP_API_URL}/alerts`, { headers: { Authorization: `Bearer ${storedToken}` } });
       if (alert) {
         setAlert(true);
@@ -89,7 +90,10 @@ const handleDelete = async () => {
             <p>Type: {itemDetail.type}</p>
             <p>Brand: {itemDetail.brand}</p>
             <p>Serial Number: {itemDetail.serialNumber}</p>
-            <p>Item picture: {itemDetail.itemPicture}</p>
+            <p>Item picture: </p>
+            {itemDetail.imageUrls.map(item => {
+         return <div key={item._id}><img src={item} alt="" srcset="" /></div>
+        })}
             <p>Bought new?: {itemDetail.newItem}</p>
             {itemDetail.transactionToken && <p>Transfer token: {itemDetail.transactionToken}</p>}
             {itemDetail.previousOwner && <p>Previous owner: {itemDetail.previousOwner.username}</p> }

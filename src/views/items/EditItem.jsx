@@ -10,6 +10,19 @@ export default function EditItem() {
   const [item, setItem] = useState(null);
   const storedToken = localStorage.getItem('authToken');
   const [errorMessage, setErrorMessage] = useState(undefined);
+  // const [imageUrls, setImageUrls] = useState([]);
+  // const [imgForUser, setImgForUser] = useState([]);
+
+  // const options = [
+  //   {value: 'Yes', text: 'Yes'},
+  //   {value: 'No', text: 'No'},
+  // ];
+
+  // const [selected, setSelected] = useState(options[0].value);
+
+  // const handleChangeSelected = event => {
+  //   setSelected(event.target.value);
+  // };
 
   useEffect(() => {
     const getData = async () => {
@@ -35,14 +48,35 @@ export default function EditItem() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const itemToSend = {
+      name: item.name,
+      brand: item.brand,
+      // newItem: selected,
+      type: item.type,
+      serialNumber: item.serialNumber,
+      // imageUrls: imageUrls
+    }
     try {
-      const newItem = await axios.put(`${process.env.REACT_APP_API_URL}/items/${id}`, item, { headers: { Authorization: `Bearer ${storedToken}` } });
+      const newItem = await axios.put(`${process.env.REACT_APP_API_URL}/items/${id}`, itemToSend, { headers: { Authorization: `Bearer ${storedToken}` } });
       toast.success('Item edited successfully')
       navigate(`/items/${newItem.data.data._id}`)
     } catch (error) {
         setErrorMessage(error.response.data.error)
     }
   }
+
+  // const handleFileUpload = async(e) => {
+  //   const uploadData = new FormData();
+  //   uploadData.append("imageUrl", e.target.files[0]);
+  //   try {
+  //     const response = await axios.post(`${process.env.REACT_APP_API_URL}/items/upload`, uploadData);
+  //     setImageUrls(prev => [...prev, response.data.fileUrl]);
+  //     setImgForUser(prev => [...prev, e.target.files[0].name]);
+
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   return (
     <div>
