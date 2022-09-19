@@ -51,10 +51,10 @@ export default function EditItem() {
     const itemToSend = {
       name: item.name,
       brand: item.brand,
-      newItem: selected,
+      // newItem: selected,
       type: item.type,
       serialNumber: item.serialNumber,
-      imageUrls: imageUrls
+      // imageUrls: imageUrls
     }
     try {
       const newItem = await axios.put(`${process.env.REACT_APP_API_URL}/items/${id}`, itemToSend, { headers: { Authorization: `Bearer ${storedToken}` } });
