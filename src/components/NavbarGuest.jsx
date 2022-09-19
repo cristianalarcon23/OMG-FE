@@ -7,7 +7,7 @@ import 'react-initials-avatar/lib/ReactInitialsAvatar.css';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Log in', href: '/login' },
+  { name: 'Login', href: '/login' },
   { name: 'Sign up', href: '/signup' },
 ]
 
@@ -52,7 +52,7 @@ export default function NavbarGuest() {
                       Home
                     </NavLink>
                     <NavLink to="/login" className= {(element) => element.isActive ? "rounded-md px-3 py-2 text-sm font-medium text-gray-300 bg-gray-700 " : "rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"}>
-                      Log in
+                      Login
                     </NavLink>
                     <NavLink to="/signup" className= {(element) => element.isActive ? "rounded-md px-3 py-2 text-sm font-medium text-gray-300 bg-gray-700 " : "rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"}>
                       Sign up
