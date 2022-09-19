@@ -13,10 +13,10 @@ export default function EditItem() {
   // const [imageUrls, setImageUrls] = useState([]);
   // const [imgForUser, setImgForUser] = useState([]);
 
-  const options = [
-    {value: 'Yes', text: 'Yes'},
-    {value: 'No', text: 'No'},
-  ];
+  // const options = [
+  //   {value: 'Yes', text: 'Yes'},
+  //   {value: 'No', text: 'No'},
+  // ];
 
   // const [selected, setSelected] = useState(options[0].value);
 
