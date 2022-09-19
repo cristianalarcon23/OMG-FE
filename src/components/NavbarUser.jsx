@@ -167,14 +167,13 @@ export default function Navbar() {
               <div className="mt-3 space-y-1 px-2">
                 <Disclosure.Button
                   as="a"
-                  href="#"
+                  href="/private"
                   className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                 >
                   Edit Your Profile
                 </Disclosure.Button>
                 <Disclosure.Button
                   as="a"
-                  href="#"
                   className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                   onClick={() => logOutUser()}
                 >

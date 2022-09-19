@@ -118,7 +118,7 @@ export default function AddItem2() {
           </div>
           <div className="sm:col-span-4">
             <label htmlFor="type" className="block text-sm font-medium text-gray-700">
-              Type (Phone, watch, TV...)
+              Type (Phone, watch, laptop...)
             </label>
             <div className="mt-1 flex rounded-md shadow-sm">
               <input
