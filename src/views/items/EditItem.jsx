@@ -49,11 +49,11 @@ export default function EditItem() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const itemToSend = {
-      name: itemData.name,
-      brand: itemData.brand,
+      name: item.name,
+      brand: item.brand,
       newItem: selected,
-      type: itemData.type,
-      serialNumber: itemData.serialNumber,
+      type: item.type,
+      serialNumber: item.serialNumber,
       imageUrls: imageUrls
     }
     try {
