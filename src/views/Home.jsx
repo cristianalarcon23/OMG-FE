@@ -26,7 +26,7 @@ export default function Home() {
           <p className="mt-1 text-xl text-white">
             Welcome to OH MY GOODS!
             </p>
-            <p className="mt-1 text-xl text-white">
+            <p className="mt-4 text-xl text-white">
             Get ready to have all your goods in one place, no more papers lost! 
             </p>
             <p className="mt-1 text-xl text-white">
