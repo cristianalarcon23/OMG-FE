@@ -136,7 +136,7 @@ export default function AddItem2() {
 
           <div className="sm:col-span-3">
             <label htmlFor="newItem" className="block text-sm font-medium text-gray-700">
-              Is a new item?
+              Has warranty?
             </label>
             <div className="mt-1">
               <select
@@ -174,7 +174,7 @@ export default function AddItem2() {
             <label htmlFor="imageUrls" className="block text-sm font-medium text-gray-700">
               Item pictures
             </label>
-            <p className="mt-2 text-sm text-gray-500">Please provide item and serial number picture</p>
+            <p className="mt-2 text-sm text-gray-500">Please provide first item picture and serial number after</p>
             <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
               <div className="space-y-1 text-center">
                 <div className="flex text-sm text-gray-600">

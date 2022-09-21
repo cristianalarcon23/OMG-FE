@@ -111,6 +111,9 @@ const handleDelete = async () => {
                    <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-6">
                      Transfer token
                    </th>
+                   <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-6">
+                     Warranty?
+                   </th>
                  </tr>
                </thead>
                <tbody className="divide-y divide-gray-200 bg-white">
@@ -123,6 +126,7 @@ const handleDelete = async () => {
                      <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">{itemDetail.serialNumber}</td>
                      <td className="whitespace-nowrap p-4 text-sm text-gray-500">{alert ? <p style={{ color: 'red' }}>Stolen alert</p> : <p>No alerts set</p> }</td>
                      <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">{itemDetail.transactionToken ? <p>{itemDetail.transactionToken}</p> : <p>No token</p> }</td>
+                     <td className="whitespace-nowrap p-4 text-sm text-gray-500">{itemDetail.newItem}</td>
                    </tr>}
                </tbody>
              </table>
