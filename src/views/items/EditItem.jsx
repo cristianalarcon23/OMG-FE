@@ -144,7 +144,7 @@ export default function EditItem() {
 
           <div className="sm:col-span-3">
             <label htmlFor="newItem" className="block text-sm font-medium text-gray-700">
-              Is a new item?
+              Has warranty?
             </label>
             <div className="mt-1">
               <select

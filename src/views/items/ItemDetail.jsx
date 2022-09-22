@@ -19,10 +19,11 @@ export default function ItemDetail() {
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}/items/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
       setItemDetail(response.data.data);
-      console.log(response.data.data)
-      const alert = await axios.get(`${process.env.REACT_APP_API_URL}/alerts`, { headers: { Authorization: `Bearer ${storedToken}` } });
-      if (alert) {
-        setAlert(true);
+      const alert = await axios.get(`${process.env.REACT_APP_API_URL}/alerts/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
+      if (alert === null) { 
+        setAlert(false);
+      } if (alert.data.data._id) {
+        setAlert(true)
       }
     } catch (error) {
         setErrorMessage(error.response.data.error)
@@ -122,16 +123,16 @@ const handleDelete = async () => {
                  </tr>
                </thead>
                <tbody className="divide-y divide-gray-200 bg-white">
-               {itemDetail &&<tr className="divide-x divide-gray-200">
-                      <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">
+               {itemDetail && <tr  className="divide-x divide-gray-200">
+                      <td key={itemDetail.name} className="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">
                        {itemDetail.name}
                      </td>
-                     <td className="whitespace-nowrap p-4 text-sm text-gray-500">{itemDetail.brand}</td>
-                     <td className="whitespace-nowrap p-4 text-sm text-gray-500">{itemDetail.type}</td>
-                     <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">{itemDetail.serialNumber}</td>
-                     <td className="whitespace-nowrap p-4 text-sm text-gray-500">{alert ? <p style={{ color: 'red' }}>Stolen alert</p> : <p>No alerts set</p> }</td>
-                     <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">{itemDetail.transactionToken ? <p>{itemDetail.transactionToken}</p> : <p>No token</p> }</td>
-                     <td className="whitespace-nowrap p-4 text-sm text-gray-500">{itemDetail.newItem}</td>
+                     <td key={itemDetail.brand} className="whitespace-nowrap p-4 text-sm text-gray-500">{itemDetail.brand}</td>
+                     <td key={itemDetail.type} className="whitespace-nowrap p-4 text-sm text-gray-500">{itemDetail.type}</td>
+                     <td key={itemDetail.serialNumber} className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">{itemDetail.serialNumber}</td>
+                     <td key={alert} className="whitespace-nowrap p-4 text-sm text-gray-500">{alert ? <p style={{ color: 'red' }}>Stolen alert</p> : <p>No alerts set</p> }</td>
+                     <td key={itemDetail.transactionToken} className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">{itemDetail.transactionToken ? <p>{itemDetail.transactionToken}</p> : <p>No token</p> }</td>
+                     <td key={itemDetail.newItem} className="whitespace-nowrap p-4 text-sm text-gray-500">{itemDetail.newItem}</td>
                    </tr>}
                </tbody>
              </table>

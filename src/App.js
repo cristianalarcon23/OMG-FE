@@ -28,7 +28,7 @@ function App() {
       {isLoggedIn ? <IsPrivate><NavbarUser /></IsPrivate> : <NavbarGuest />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/search" element={<IsPrivate><Search /></IsPrivate>} />
         <Route path="/items" element={<IsPrivate><Items /></IsPrivate>} />
         <Route path="/items/:id" element={<IsPrivate><ItemDetail /></IsPrivate>} />
         <Route path="/items/add" element={<IsPrivate><AddItem /></IsPrivate>} />
