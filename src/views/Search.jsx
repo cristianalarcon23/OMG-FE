@@ -29,7 +29,7 @@ export default function Search() {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/items/search`, search, { headers: { Authorization: `Bearer ${storedToken}` } });
       const alert = await axios.get(`${process.env.REACT_APP_API_URL}/alerts/${response.data.data._id}`, { headers: { Authorization: `Bearer ${storedToken}` } });
       if (alert.data.data !== null) {
-        toast.error('Owner marked item as stolen')
+        toast.error('Owner marked this item as stolen')
         setResult(response.data.data);
         setAlert(true);
       } else {
@@ -43,7 +43,12 @@ export default function Search() {
 
   return (
     <>
-<div className="bg-white sm:py-16">
+          <img
+      className="mx-auto h-24 w-auto"
+      src='https://res.cloudinary.com/do1ugcmht/image/upload/v1663593797/logo-black_fma6cl.png'
+      alt="Your Company"
+    />
+<div className="bg-white py-4 sm:py-4">
 <div className="relative sm:py-16">
   <div aria-hidden="true" className="hidden sm:block">
     <div className="absolute inset-y-0 left-0 w-1/2 rounded-r-3xl bg-gray-50" />
@@ -88,7 +93,7 @@ export default function Search() {
       <div className="relative">
         <div className="sm:text-center">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-          Please type a S/N to look for it:
+          Please type a S/N to look for:
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-indigo-200">
           Reminder! Search only allows alphanumeric values, no special characters allowed
@@ -121,17 +126,48 @@ export default function Search() {
     </div>
   </div>
 </div>
-<div>
-        {result === false ? <p>Your search has no result</p> : result ? <div>
-        <p>Model: {result.name}</p>
-        <p>Brand: {result.brand}</p>
-        <p>Type: {result.type}</p>
-        <p>Owner: {result.owner.username}</p>
-        {alert && <p style={{ color: 'red' }}>Owner set an alert for this item</p> }
-        </div> 
-        : ''}
-        {errorMessage && !result && <p style={{ color: 'red' }}>{errorMessage}</p>}     
-      </div>
+      {errorMessage && !result && <p style={{ color: 'red', textAlign: 'center' }}>{errorMessage}</p>}
+      {result === false ? <p>No results</p> : result ? 
+      <div className="overflow-hidden shadow py-4 ring-1 ring-black ring-opacity-5 md:rounded-lg">
+             <table className="min-w-full divide-y divide-gray-300">
+               <thead className="bg-gray-50">
+                 <tr className="divide-x divide-gray-200">
+                   <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                     Model
+                   </th>
+                   <th scope="col" className="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">
+                     Brand
+                   </th>
+                   <th scope="col" className="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">
+                     Type
+                   </th>
+                   <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-6">
+                     Serial Number
+                   </th>
+                   <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-6">
+                     Stolen alert
+                   </th>
+                   <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-6">
+                     Warranty?
+                   </th>
+                   <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-6">
+                     Owner
+                   </th>
+                 </tr>
+               </thead>
+               <tbody className="divide-y divide-gray-200 bg-white">
+               {result &&<tr className="divide-x divide-gray-200">
+                      <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-6">{result.name}</td>
+                     <td className="whitespace-nowrap p-4 text-sm text-gray-500">{result.brand}</td>
+                     <td className="whitespace-nowrap p-4 text-sm text-gray-500">{result.type}</td>
+                     <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-6">{result.serialNumber}</td>
+                     <td className="whitespace-nowrap p-4 text-sm text-gray-500">{alert ? <p style={{ color: 'red' }}>Stolen alert</p> : <p>No alerts set</p> }</td>
+                     <td className="whitespace-nowrap p-4 text-sm text-gray-500">{result.newItem}</td>
+                     <td className="whitespace-nowrap p-4 text-sm text-gray-500">{result.owner.username}</td>
+                   </tr>}
+               </tbody>
+             </table>
+           </div> : ''}
 </div>
 </>
   )

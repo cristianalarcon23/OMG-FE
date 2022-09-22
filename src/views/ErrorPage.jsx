@@ -6,14 +6,11 @@ import { Link } from 'react-router-dom';
 export default function Example() {
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full">
-        <body class="h-full">
-        ```
-      */}
+          <img
+      className="mx-auto h-24 w-auto"
+      src='https://res.cloudinary.com/do1ugcmht/image/upload/v1663593797/logo-black_fma6cl.png'
+      alt="Your Company"
+    />
       <div className="min-h-full bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
         <div className="mx-auto max-w-max">
           <main className="sm:flex">

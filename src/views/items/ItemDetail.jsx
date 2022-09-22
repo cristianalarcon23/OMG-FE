@@ -84,6 +84,11 @@ const handleDelete = async () => {
 
   return (
     <>
+          <img
+      className="mx-auto h-24 w-auto"
+      src='https://res.cloudinary.com/do1ugcmht/image/upload/v1663593797/logo-black_fma6cl.png'
+      alt="Your Company"
+    />
      {itemDetail && <div className="px-4 sm:px-6 lg:px-8">
      <div className="mt-20 flex flex-col">
        <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -131,8 +136,8 @@ const handleDelete = async () => {
                </tbody>
              </table>
            </div>
-           <div className="sm:flex sm:items-center">
-       <div className="sm:flex-auto">
+           <div className="sm:flex sm:items-center ">
+       <div className="sm:flex-auto ">
          <p className="mt-20 text-sm text-gray-700">  
          </p>
        </div>
@@ -146,6 +151,12 @@ const handleDelete = async () => {
          </button>
        </div>
        <div className="mt-20 sm:mt-0 sm:ml-16 sm:flex-none">
+         {!alert ? <button className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" onClick={handleAlert}>Mark item as lost</button> : <button className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" onClick={deleteAlert}>Unmark item as lost</button>}
+       </div>
+       <div className="mt-20 sm:mt-0 sm:ml-16 sm:flex-none">
+       {!itemDetail.transactionToken ? <button className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" onClick={handleToken}>Generate token</button> : <button className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" onClick={deleteToken}>Delete token</button>}
+       </div>
+       <div className="mt-20 sm:mt-0 sm:ml-16 sm:flex-none">
          <button
            type="button"
            className="inline-flex items-center justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:w-auto"
@@ -153,12 +164,6 @@ const handleDelete = async () => {
          >
            Delete item
          </button>
-       </div>
-       <div className="mt-20 sm:mt-0 sm:ml-16 sm:flex-none">
-         {!alert ? <button className="inline-flex items-center justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:w-auto" onClick={handleAlert}>Mark item as lost</button> : <button className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" onClick={deleteAlert}>Unmark item as lost</button>}
-       </div>
-       <div className="mt-20 sm:mt-0 sm:ml-16 sm:flex-none">
-       {!itemDetail.transactionToken ? <button className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" onClick={handleToken}>Generate token</button> : <button className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto" onClick={deleteToken}>Delete token</button>}
        </div>
      </div>
          </div>

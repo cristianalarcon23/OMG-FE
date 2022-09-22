@@ -21,6 +21,11 @@ export default function Items() {
     },[])
     return (
         <>
+              <img
+      className="mx-auto h-24 w-auto"
+      src='https://res.cloudinary.com/do1ugcmht/image/upload/v1663593797/logo-black_fma6cl.png'
+      alt="Your Company"
+    />
       <div className="bg-white">
       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">My items</h2>

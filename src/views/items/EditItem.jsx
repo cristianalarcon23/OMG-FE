@@ -80,6 +80,11 @@ export default function EditItem() {
 
   return (
     <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
+            <img
+      className="mx-auto h-24 w-auto"
+      src='https://res.cloudinary.com/do1ugcmht/image/upload/v1663593797/logo-black_fma6cl.png'
+      alt="Your Company"
+    />
     <form className="space-y-8 divide-y divide-gray-200" onSubmit={handleSubmit}>
     <div className="space-y-8 divide-y divide-gray-200">
       <div>
