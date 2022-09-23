@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import JsPDF from 'jspdf';
 
 
 export default function ItemDetail() {
@@ -83,14 +84,22 @@ const handleDelete = async () => {
     }
   }
 
+  
+  const generatePDF = () => {
+
+    const report = new JsPDF('landscape','pt','a2');
+    report.html(document.querySelector('#report')).then(() => {
+        report.save('report.pdf');
+    })};
+
   return (
     <>
           <img
       className="mx-auto h-24 w-auto"
       src='https://res.cloudinary.com/do1ugcmht/image/upload/v1663593797/logo-black_fma6cl.png'
-      alt="Your Company"
+      alt="Oh my goods"
     />
-     {itemDetail && <div className="px-4 sm:px-6 lg:px-8">
+     {itemDetail && <div className="px-4 sm:px-6 lg:px-8"  id="report">
      <div className="mt-20 flex flex-col">
        <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -164,6 +173,15 @@ const handleDelete = async () => {
            onClick={handleDelete}
          >
            Delete item
+         </button>
+       </div>
+       <div className="mt-20 sm:mt-0 sm:ml-16 sm:flex-none">
+         <button
+           type="button"
+           className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+           onClick={generatePDF}
+         >
+           Export PDF
          </button>
        </div>
      </div>
