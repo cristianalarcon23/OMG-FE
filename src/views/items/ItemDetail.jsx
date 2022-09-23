@@ -89,7 +89,7 @@ const handleDelete = async () => {
 
     const report = new JsPDF('landscape','pt','a2');
     report.html(document.querySelector('#report')).then(() => {
-        report.save('report.pdf');
+        report.save(`Item_${itemDetail.name}`);
     })};
 
   return (
@@ -99,7 +99,8 @@ const handleDelete = async () => {
       src='https://res.cloudinary.com/do1ugcmht/image/upload/v1663593797/logo-black_fma6cl.png'
       alt="Oh my goods"
     />
-     {itemDetail && <div className="px-4 sm:px-6 lg:px-8"  id="report">
+     {itemDetail && 
+     <div className="px-4 sm:px-6 lg:px-8" id="report">
      <div className="mt-20 flex flex-col">
        <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -146,10 +147,25 @@ const handleDelete = async () => {
                </tbody>
              </table>
            </div>
-           <div className="sm:flex sm:items-center ">
+           <div className="py-8 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+        {itemDetail.imageUrls && itemDetail.imageUrls.map((item) => (
+              <>
+              <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8 ">
+                <img
+                  src={item}
+                  alt={item.name}
+                  className="h-full w-full object-cover object-center group-hover:opacity-75"
+                />
+              </div>
+              </>
+          ))}
+        </div>
+        </div>
+        </div>
+           <div className="sm:flex sm:items-center px-8">
        <div className="sm:flex-auto ">
-         <p className="mt-20 text-sm text-gray-700">  
-         </p>
+         {/* <p className="mt-20 text-sm text-gray-700">  
+         </p> */}
        </div>
        <div className="mt-20 sm:mt-0 sm:ml-16 sm:flex-none">
          <button
@@ -169,39 +185,25 @@ const handleDelete = async () => {
        <div className="mt-20 sm:mt-0 sm:ml-16 sm:flex-none">
          <button
            type="button"
-           className="inline-flex items-center justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:w-auto"
-           onClick={handleDelete}
-         >
-           Delete item
-         </button>
-       </div>
-       <div className="mt-20 sm:mt-0 sm:ml-16 sm:flex-none">
-         <button
-           type="button"
            className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
            onClick={generatePDF}
          >
            Export PDF
          </button>
        </div>
+       <div className="mt-20 sm:mt-0 sm:ml-16 sm:flex-none">
+         <button
+           type="button"
+           className="inline-flex items-center justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:w-auto"
+           onClick={handleDelete}
+         >
+           Delete item
+         </button>
+       </div>
      </div>
          </div>
        </div>
-     </div>
-        <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-        {itemDetail.imageUrls && itemDetail.imageUrls.map((item) => (
-              <>
-              <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-                <img
-                  src={item}
-                  alt={item.name}
-                  className="h-full w-full object-cover object-center group-hover:opacity-75"
-                />
-              </div>
-              </>
-          ))}
-        </div>
-   </div>}
+   }
    </>
   )
 }
