@@ -27,7 +27,7 @@ export default function Home() {
             Welcome to OH MY GOODS!
             </p>
             <p className="mt-4 text-xl text-white">
-            Get ready to have all your goods in one place, no more papers lost! 
+            Get ready to have all your goods in one place, save your items as a PDF and no more papers lost! 
             </p>
             <p className="mt-1 text-xl text-white">
             Give your transactions a plus of safety.

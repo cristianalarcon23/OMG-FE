@@ -94,15 +94,16 @@ const handleDelete = async () => {
 
   return (
     <>
-          <img
+
+     {itemDetail && 
+     <div className="px-4 sm:px-6 lg:px-8" id="report">
+                <img
       className="mx-auto h-24 w-auto"
       src='https://res.cloudinary.com/do1ugcmht/image/upload/v1663593797/logo-black_fma6cl.png'
       alt="Oh my goods"
     />
-     {itemDetail && 
-     <div className="px-4 sm:px-6 lg:px-8" id="report">
      <div className="mt-20 flex flex-col">
-       <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+       <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8" >
          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
