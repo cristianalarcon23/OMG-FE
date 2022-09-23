@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { useContext } from 'react';
 import NavbarUser from './components/NavbarUser';
+import NavbarGuest from './components/NavbarGuest';
 import ErrorPage from './views/ErrorPage';
 import Signup from './views/auth/Signup';
 import Login from './views/auth/Login';
@@ -16,7 +17,6 @@ import ItemDetail from './views/items/ItemDetail';
 import Transactions from './views/transactions/Transactions';
 import Receive from './views/transactions/Receive';
 import EditItem from './views/items/EditItem';
-import NavbarGuest from './components/NavbarGuest';
 import { AuthContext } from './context/AuthContext';
 
 
