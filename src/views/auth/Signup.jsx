@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Toast } from 'react-hot-toast';
+import toast  from 'react-hot-toast';
 
 export default function Signup() {
     const [user, setUser] = useState({
