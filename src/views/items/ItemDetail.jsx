@@ -163,7 +163,7 @@ const handleDelete = async () => {
         </div>
         </div>
         </div>
-           <div className="sm:flex sm:items-center px-8">
+           <div className="sm:flex sm:items-center px-8 mb-20">
        <div className="sm:flex-auto ">
          {/* <p className="mt-20 text-sm text-gray-700">  
          </p> */}
