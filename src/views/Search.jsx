@@ -46,9 +46,9 @@ export default function Search() {
           <img
       className="mx-auto h-24 w-auto"
       src='https://res.cloudinary.com/do1ugcmht/image/upload/v1663593797/logo-black_fma6cl.png'
-      alt="Your Company"
+      alt="Oh my goods logo"
     />
-<div className="bg-white py-4 sm:py-4">
+<div className="bg-white py-4 mb-20 sm:py-4">
 <div className="relative sm:py-16">
   <div aria-hidden="true" className="hidden sm:block">
     <div className="absolute inset-y-0 left-0 w-1/2 rounded-r-3xl bg-gray-50" />

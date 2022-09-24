@@ -91,7 +91,7 @@ export default function Transactions() {
               <p className="mt-20 text-sm text-gray-700 content-center">  
               </p>
             </div>
-          <div className="mt-20 flex flex-center sm:mt-0 sm:ml-16 sm:flex-none content-center">
+          <div className="my-20 flex flex-center sm:mt-0 sm:ml-16 sm:flex-none content-center">
             <Link
             to={'/transactions/receive'}
            type="Link"

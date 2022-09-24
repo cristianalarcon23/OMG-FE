@@ -46,12 +46,12 @@ export default function Signup() {
     return (
         <>
   
-          <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
+          <div className="flex min-h-full flex-col justify-center py-12 pb-32 sm:px-6 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
               <img
                 className="mx-auto h-24 w-auto"
                 src="https://res.cloudinary.com/do1ugcmht/image/upload/v1663593797/logo-black_fma6cl.png"
-                alt="Your Company"
+                alt="Oh my goods logo"
               />
               <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Register your account</h2>
             </div>
