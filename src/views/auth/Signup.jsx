@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Toast } from 'react-hot-toast';
 
 export default function Signup() {
     const [user, setUser] = useState({
@@ -37,6 +38,7 @@ export default function Signup() {
       e.preventDefault();
       try {
         await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password, fullName: user.fullName, idNumber: user.idNumber, telephone: user.telephone });
+        toast.success('User registered successfully!')
         navigate('/login');
       } catch (error) {
         setErrorMessage(error.response.data.error)

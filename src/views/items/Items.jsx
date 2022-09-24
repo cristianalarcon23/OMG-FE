@@ -24,7 +24,7 @@ export default function Items() {
               <img
       className="mx-auto h-24 w-auto"
       src='https://res.cloudinary.com/do1ugcmht/image/upload/v1663593797/logo-black_fma6cl.png'
-      alt="Your Company"
+      alt="Oh my goods logo"
     />
       <div className="bg-white">
       <div className="mx-auto max-w-2xl py-16 mb-20 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
