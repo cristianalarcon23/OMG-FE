@@ -18,7 +18,6 @@ import Transactions from './views/transactions/Transactions';
 import Receive from './views/transactions/Receive';
 import EditItem from './views/items/EditItem';
 import { AuthContext } from './context/AuthContext';
-import Footer from './components/Footer';
 
 
 function App() {
@@ -41,7 +40,6 @@ function App() {
         <Route path="/private" element={<IsPrivate><PrivateView/></IsPrivate>}/>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-      <Footer/>
     </div>
   );
 }
